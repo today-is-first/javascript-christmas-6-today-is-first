@@ -14,7 +14,7 @@ const MENU = {
     초코케이크: 15000,
     아이스크림: 5000,
   },
-  drint: {
+  drink: {
     제로콜라: 3000,
     레드와인: 60000,
     샴페인: 25000,
@@ -27,6 +27,8 @@ const MONTH_EVENT_RULES = {
   weekdayDiscount: 2023,
   weekendDiscount: 2023,
   menuMaxNum: 20,
+  giftEventThreshold: 120000,
+  gift: ['샴페인', 25000, 1],
 };
 
 const CHRISTMAS_EVENT_RULES = {
@@ -59,9 +61,16 @@ const PRINT_MESSAGES = {
   totalAdvantageCost: '\n<총혜택 금액>',
   eventBadge: `\n<${MONTH_EVENT_RULES.eventMonth}월 이벤트 배지>`,
   nothing: '없음',
-  costSplit: (cost) => cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+  costSplit: (cost) =>
+    cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원',
 };
 
 const ERROR_MESSAGES = {};
 
-export { INPUT_MESSAGES, ERROR_MESSAGES, PRINT_MESSAGES, MENU };
+export {
+  INPUT_MESSAGES,
+  ERROR_MESSAGES,
+  PRINT_MESSAGES,
+  MENU,
+  MONTH_EVENT_RULES,
+};

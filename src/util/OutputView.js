@@ -1,5 +1,9 @@
 import { Console } from '@woowacourse/mission-utils';
-import { MENU, PRINT_MESSAGES } from '../constant/Constants.js';
+import {
+  MENU,
+  PRINT_MESSAGES,
+  MONTH_EVENT_RULES,
+} from '../constant/Constants.js';
 
 const OutputView = {
   printMenu(menus) {
@@ -19,8 +23,22 @@ const OutputView = {
       }),
     );
     Console.print(PRINT_MESSAGES.costSplit(beforeDiscountCost));
+    return beforeDiscountCost;
   },
-  // ...
+
+  printGiftMenu(beforeDiscountCost) {
+    Console.print(PRINT_MESSAGES.giftMenu);
+    if (beforeDiscountCost >= MONTH_EVENT_RULES.giftEventThreshold) {
+      Console.print(
+        PRINT_MESSAGES.menu(
+          MONTH_EVENT_RULES.gift[0],
+          MONTH_EVENT_RULES.gift[2],
+        ),
+      );
+      return MONTH_EVENT_RULES.gift[1];
+    }
+    Console.print(PRINT_MESSAGES.nothing);
+  },
 };
 
 export default OutputView;
