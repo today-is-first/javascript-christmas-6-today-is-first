@@ -3,24 +3,24 @@ import { INPUT_MESSAGES } from '../constant/Constants.js';
 
 const InputView = {
   async readDate() {
-    let input;
+    let inputs;
     try {
-      input = await Console.readLineAsync(INPUT_MESSAGES.readDate);
+      inputs = await Console.readLineAsync(INPUT_MESSAGES.readDate);
     } catch (error) {
       Console.print(error.message);
-      input = await this.readDate();
+      inputs = await this.readDate();
     }
-    return input;
+    return inputs;
   },
   async readMenu() {
-    let input;
+    let inputs;
     try {
-      input = await Console.readLineAsync(INPUT_MESSAGES.readMenu);
+      inputs = await Console.readLineAsync(INPUT_MESSAGES.readMenu);
     } catch (error) {
       Console.print(error.message);
-      input = await this.readMenu();
+      inputs = await this.readMenu();
     }
-    return input;
+    return inputs.split(',').map((input) => input.split('-'));
   },
 };
 

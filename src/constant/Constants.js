@@ -24,10 +24,11 @@ const INPUT_MESSAGES = {
 };
 
 const PRINT_MESSAGES = {
-  intro: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.\n',
+  intro: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.',
   outtro: (date) =>
     `${MONTH_EVENT_RULES.eventMonth}월 ${date}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n`,
-  orderedMenu: '\n<주문 메뉴>',
+  orderedMenu: `\n<주문 메뉴>`,
+  menu: (menu, amount) => `${menu} ${amount}개`,
   beforeDiscountCost: '\n<할인 전 총주문 금액>',
   afterDiscountCost: '\n<할인 후 예상 결제 금액>',
   giftMenu: '\n<증정 메뉴>',
