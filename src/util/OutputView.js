@@ -38,6 +38,7 @@ const OutputView = {
       return MONTH_EVENT_RULES.gift[1];
     }
     Console.print(PRINT_MESSAGES.nothing);
+    return 0;
   },
 };
 

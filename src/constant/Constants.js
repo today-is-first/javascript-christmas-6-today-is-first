@@ -22,6 +22,8 @@ const MENU = {
 };
 
 const MONTH_EVENT_RULES = {
+  firstFriday: 1,
+  firstSaturday: 2,
   eventMonth: 12,
   eventDateMax: 31,
   weekdayDiscount: 2023,
@@ -35,11 +37,13 @@ const CHRISTMAS_EVENT_RULES = {
   rangeMin: 1,
   rangeMax: 25,
   totalDiscount: (date) => {
-    CHRISTMAS_EVENT_RULES.initialDiscountCost +
-      (date - 1) * CHRISTMAS_EVENT_RULES.discountPerDay;
+    return (
+      CHRISTMAS_EVENT_RULES.initialDiscountCost +
+      (date - 1) * CHRISTMAS_EVENT_RULES.increaseAmount
+    );
   },
   initialDiscountCost: 1000,
-  discountPerDay: 100,
+  increaseAmount: 100,
 };
 
 const INPUT_MESSAGES = {
@@ -51,7 +55,7 @@ const INPUT_MESSAGES = {
 const PRINT_MESSAGES = {
   intro: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.',
   outtro: (date) =>
-    `${MONTH_EVENT_RULES.eventMonth}월 ${date}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n`,
+    `${MONTH_EVENT_RULES.eventMonth}월 ${date}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!`,
   orderedMenu: `\n<주문 메뉴>`,
   menu: (menu, amount) => `${menu} ${amount}개`,
   beforeDiscountCost: '\n<할인 전 총주문 금액>',
@@ -73,4 +77,5 @@ export {
   PRINT_MESSAGES,
   MENU,
   MONTH_EVENT_RULES,
+  CHRISTMAS_EVENT_RULES,
 };
