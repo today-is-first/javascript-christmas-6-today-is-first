@@ -1,3 +1,26 @@
+const MENU = {
+  appetizers: {
+    양송이수프: 6000,
+    타파스: 5500,
+    시저샐러드: 8000,
+  },
+  main: {
+    티본스테이크: 55000,
+    바비큐립: 54000,
+    해산물파스타: 35000,
+    크리스마스파스타: 25000,
+  },
+  desert: {
+    초코케이크: 15000,
+    아이스크림: 5000,
+  },
+  drint: {
+    제로콜라: 3000,
+    레드와인: 60000,
+    샴페인: 25000,
+  },
+};
+
 const MONTH_EVENT_RULES = {
   eventMonth: 12,
   eventDateMax: 31,
@@ -36,8 +59,9 @@ const PRINT_MESSAGES = {
   totalAdvantageCost: '\n<총혜택 금액>',
   eventBadge: `\n<${MONTH_EVENT_RULES.eventMonth}월 이벤트 배지>`,
   nothing: '없음',
+  costSplit: (cost) => cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
 };
 
 const ERROR_MESSAGES = {};
 
-export { INPUT_MESSAGES, ERROR_MESSAGES, PRINT_MESSAGES };
+export { INPUT_MESSAGES, ERROR_MESSAGES, PRINT_MESSAGES, MENU };

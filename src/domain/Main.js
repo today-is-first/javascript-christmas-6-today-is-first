@@ -8,6 +8,7 @@ class Main {
     this.date = await InputView.readDate();
     this.menu = await InputView.readMenu();
     OutputView.printMenu(this.menu);
+    OutputView.printBeforeDiscountCost(this.menu);
   }
 }
 
