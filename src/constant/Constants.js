@@ -9,9 +9,10 @@ const MONTH_EVENT_RULES = {
 const CHRISTMAS_EVENT_RULES = {
   rangeMin: 1,
   rangeMax: 25,
-  totalDiscount: (date) =>
+  totalDiscount: (date) => {
     CHRISTMAS_EVENT_RULES.initialDiscountCost +
-    (date - 1) * CHRISTMAS_EVENT_RULES.discountPerDay,
+      (date - 1) * CHRISTMAS_EVENT_RULES.discountPerDay;
+  },
   initialDiscountCost: 1000,
   discountPerDay: 100,
 };

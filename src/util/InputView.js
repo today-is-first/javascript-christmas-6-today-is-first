@@ -12,6 +12,16 @@ const InputView = {
     }
     return input;
   },
+  async readMenu() {
+    let input;
+    try {
+      input = await Console.readLineAsync(INPUT_MESSAGES.readMenu);
+    } catch (error) {
+      Console.print(error.message);
+      input = await this.readMenu();
+    }
+    return input;
+  },
 };
 
 export default InputView;

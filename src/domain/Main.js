@@ -1,3 +1,4 @@
 import InputView from '../util/InputView.js';
 
-InputView.readDate();
+await InputView.readDate();
+await InputView.readMenu();
