@@ -37,7 +37,7 @@ class Event {
       this.discount();
     }
     this.totalAdvantageCost = this.advantageList.reduce(
-      (acc, cur) => (acc -= cur[1]),
+      (totalCost, menu) => (totalCost -= menu[1]),
       0,
     );
   }
@@ -77,17 +77,12 @@ class Event {
     }
   }
 
-  weekdayDiscount(menus) {
-    let discountAmount = 0;
-    menus.forEach((menu) => {
-      if (MENU.desert[menu[0]]) {
-        discountAmount += menu[1];
-      }
-    });
-    this.advantageList.push([
-      EVENT_NAME.weekday,
-      MONTH_EVENT_RULES.weekdayDiscount * discountAmount,
-    ]);
+  specialDiscount() {
+    if (this.date === '25' || !((this.date - 3) % 7))
+      this.advantageList.push([
+        EVENT_NAME.special,
+        MONTH_EVENT_RULES.specialDiscount,
+      ]);
   }
 
   weekendDiscount(menus) {
@@ -103,12 +98,17 @@ class Event {
     ]);
   }
 
-  specialDiscount() {
-    if (this.date === '25' || !((this.date - 3) % 7))
-      this.advantageList.push([
-        EVENT_NAME.special,
-        MONTH_EVENT_RULES.specialDiscount,
-      ]);
+  weekdayDiscount(menus) {
+    let discountAmount = 0;
+    menus.forEach((menu) => {
+      if (MENU.desert[menu[0]]) {
+        discountAmount += menu[1];
+      }
+    });
+    this.advantageList.push([
+      EVENT_NAME.weekday,
+      MONTH_EVENT_RULES.weekdayDiscount * discountAmount,
+    ]);
   }
 }
 

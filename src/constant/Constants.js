@@ -39,10 +39,10 @@ const MONTH_EVENT_RULES = {
   weekendDiscount: 2023,
   menuMaxNum: 20,
   giftEventThreshold: 120000,
+  eventCostThreshold: 10000,
   gift: ['샴페인', 25000, 1],
   specialDiscount: 1000,
   menuExcess: 20,
-  eventCostThreshold: 10000,
 };
 
 const CHRISTMAS_EVENT_RULES = {
