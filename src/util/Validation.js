@@ -4,8 +4,8 @@ import {
   MENU,
 } from '../constant/Constants.js';
 
-const checkInputNumber = (input, message) => {
-  if (input.match(/\D/g)) throw new Error(message);
+const checkInputNumber = (input) => {
+  if (input.match(/\D/g)) throw new Error(ERROR_MESSAGES.invalidDate);
 };
 
 const checkInputSpace = (input) => {
@@ -39,3 +39,17 @@ const checkMenuExistence = (menus) => {
   );
   if (!existence) throw new Error(ERROR_MESSAGES.invalidMenu);
 };
+
+const checkDate = (date) => {
+  checkDateRange(date);
+  checkDateLength(date);
+  checkInputNumber(date);
+  checkInputBlank(date);
+  checkInputSpace(date);
+};
+
+const checkMenu = (menus) => {
+  checkMenuExistence(menus);
+};
+
+export { checkDate, checkMenu };

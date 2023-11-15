@@ -9,18 +9,27 @@ import {
   EVENT_NAME,
 } from '../constant/Constants.js';
 
-class Main {
+class EventPlanner {
   constructor() {
     this.advantageList = [];
     this.totalAdvantageCost = 0;
   }
 
-  async start() {
+  async eventPlanning() {
+    await this.getUserInput();
+    this.eventDiscount();
+    this.printResult();
+  }
+
+  async getUserInput() {
     Console.print(PRINT_MESSAGES.intro);
     this.date = await InputView.readDate();
     this.menu = await InputView.readMenu();
     Console.print(PRINT_MESSAGES.outtro(this.date));
     OutputView.printMenu(this.menu);
+  }
+
+  eventDiscount() {
     this.beforeDiscountCost = OutputView.printBeforeDiscountCost(this.menu);
     this.advantageList.push(OutputView.printGiftMenu(this.beforeDiscountCost));
     this.discount();
@@ -28,6 +37,9 @@ class Main {
       (acc, cur) => (acc -= cur[1]),
       0,
     );
+  }
+
+  printResult() {
     OutputView.printAdvantageList(this.advantageList);
     OutputView.printTotalAdvantageCost(this.totalAdvantageCost);
     OutputView.printAfterDiscountCost(
@@ -97,4 +109,4 @@ class Main {
   }
 }
 
-export default Main;
+export default EventPlanner;

@@ -1,9 +1,9 @@
-import Main from './domain/Main.js';
+import EventPlanner from './domain/EventPlanner.js';
 
 class App {
   async run() {
-    const main = new Main();
-    await main.start();
+    const eventPlanner = new EventPlanner();
+    await eventPlanner.eventPlanning();
   }
 }
 
