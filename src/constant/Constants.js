@@ -42,6 +42,7 @@ const MONTH_EVENT_RULES = {
   gift: ['샴페인', 25000, 1],
   specialDiscount: 1000,
   menuExcess: 20,
+  eventCostThreshold: 10000,
 };
 
 const CHRISTMAS_EVENT_RULES = {
@@ -96,7 +97,6 @@ const ERROR_MESSAGES = {
   invalidDate: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.',
   invalidMenu: '[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.',
   inputBlank: '[ERROR] 입력 값이 없습니다. 다시 입력해 주세요.',
-  inputSpace: '[ERROR] 입력 값에 공백이 포함되어 있습니다. 다시 입력해 주세요.',
 };
 
 export {

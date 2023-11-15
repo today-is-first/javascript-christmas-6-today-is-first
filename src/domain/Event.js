@@ -33,7 +33,9 @@ class Event {
   eventDiscount() {
     this.beforeDiscountCost = OutputView.printBeforeDiscountCost(this.menu);
     this.advantageList.push(OutputView.printGiftMenu(this.beforeDiscountCost));
-    this.discount();
+    if (this.beforeDiscountCost >= MONTH_EVENT_RULES.eventCostThreshold) {
+      this.discount();
+    }
     this.totalAdvantageCost = this.advantageList.reduce(
       (acc, cur) => (acc -= cur[1]),
       0,

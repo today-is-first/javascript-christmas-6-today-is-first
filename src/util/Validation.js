@@ -8,10 +8,6 @@ const checkInputNumber = (input) => {
   if (input.match(/\D/g)) throw new Error(ERROR_MESSAGES.invalidDate);
 };
 
-const checkInputSpace = (input) => {
-  if (input.match(' ')) throw new Error(ERROR_MESSAGES.inputSpace);
-};
-
 const checkInputBlank = (input) => {
   if (input === '') throw new Error(ERROR_MESSAGES.inputBlank);
 };
@@ -85,11 +81,11 @@ const checkDate = (date) => {
   checkDateLength(date);
   checkInputNumber(date);
   checkInputBlank(date);
-  checkInputSpace(date);
 };
 
 const checkMenu = (menus) => {
   let menuSplit;
+  checkInputBlank(menus);
   checkMenuFormat(menus);
   menuSplit = menus.split(',').map((input) => input.split('-'));
   checkMenuDuplicated(menuSplit);
