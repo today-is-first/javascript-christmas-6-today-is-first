@@ -16,12 +16,12 @@ class Event {
   }
 
   async eventPlanning() {
-    await this.getUserInput();
+    await this.readUserInput();
     this.eventDiscount();
     this.printResult();
   }
 
-  async getUserInput() {
+  async readUserInput() {
     Console.print(PRINT_MESSAGES.intro);
     this.date = await InputView.readDate();
     this.menu = await InputView.readMenu();

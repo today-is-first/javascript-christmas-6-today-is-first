@@ -39,7 +39,7 @@ describe('Event.js 테스트', () => {
   beforeEach(() => {
     event = new Event();
   });
-  test('getUserInput 테스트', async () => {
+  test('readUserInput 테스트', async () => {
     const logSpy = getLogSpy();
     mockQuestions([
       '34',
@@ -56,7 +56,7 @@ describe('Event.js 테스트', () => {
       PRINT_MESSAGES.menu('티본스테이크', '1'),
     ];
 
-    await event.getUserInput();
+    await event.readUserInput();
 
     expect(event.date).toBe('25');
     expect(event.menu).toEqual([['티본스테이크', '1']]);
