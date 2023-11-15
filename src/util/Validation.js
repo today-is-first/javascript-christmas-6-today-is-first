@@ -63,7 +63,7 @@ const checkMenuDuplicated = (menus) => {
 
 const checkMenuExcess = (menus) => {
   let totalAmount = menus.reduce(
-    (totalAmount, menu) => (totalAmount += menu[1]),
+    (totalAmount, menu) => (totalAmount += Number(menu[1])),
     0,
   );
   if (totalAmount > MONTH_EVENT_RULES.menuExcess)
@@ -85,7 +85,7 @@ const checkMenu = (menus) => {
   checkMenuDuplicated(menuSplit);
   checkMenuExistence(menuSplit);
   checkMenuAmount(menuSplit);
-  /* checkMenuExcess(menuSplit); */
+  checkMenuExcess(menuSplit);
 };
 
 export { checkDate, checkMenu };
