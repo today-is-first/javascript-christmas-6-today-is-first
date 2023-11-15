@@ -48,7 +48,7 @@ const checkMenuAmount = (menus) => {
 };
 
 const checkMenuFormat = (menus) => {
-  let format = /^([A-Za-z가-힣]+)-[1-9]$/;
+  let format = /^([A-Za-z가-힣]+)-([1-9][0-9]*|0)$/;
   menus.split(',').map((menu) => {
     if (!format.test(menu)) throw new Error(ERROR_MESSAGES.invalidMenu);
   });
@@ -59,6 +59,12 @@ const checkMenuDuplicated = (menus) => {
   menus.forEach((menu) => menuList.add(menu[0]));
   if (menus.length !== menuList.size)
     throw new Error(ERROR_MESSAGES.invalidMenu);
+};
+
+const checkMenuExcess = (menus) => {
+  let menuAmount = menus.reduce((amount, menu) => (amount += menu[1]), 0);
+  if (menuAmount > MONTH_EVENT_RULES.menuExcess)
+    throw new Error(ERROR_MESSAGES.menuAmount);
 };
 
 const checkDate = (date) => {
@@ -76,6 +82,7 @@ const checkMenu = (menus) => {
   checkMenuDuplicated(menuSplit);
   checkMenuExistence(menuSplit);
   checkMenuAmount(menuSplit);
+  checkMenuExcess(menuSplit);
 };
 
 export { checkDate, checkMenu };

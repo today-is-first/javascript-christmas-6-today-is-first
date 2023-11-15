@@ -41,6 +41,7 @@ const MONTH_EVENT_RULES = {
   giftEventThreshold: 120000,
   gift: ['샴페인', 25000, 1],
   specialDiscount: 1000,
+  menuExcess: 20,
 };
 
 const CHRISTMAS_EVENT_RULES = {
@@ -88,7 +89,6 @@ const PRINT_MESSAGES = {
 };
 
 const ERROR_MESSAGES = {
-  inputNumber: '[ERROR] 방문 날짜는 숫자여야 합니다. 다시 입력해 주세요.',
   dateLength:
     '[ERROR] 방문 날짜는 하루만 입력할 수 있습니다. 다시 입력해 주세요.',
   menuAmount: '[ERROR] 메뉴는 20개를 초과할 수 없습니다. 다시 입력해 주세요.',
