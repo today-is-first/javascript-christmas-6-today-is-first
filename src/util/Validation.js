@@ -70,6 +70,16 @@ const checkMenuExcess = (menus) => {
     throw new Error(ERROR_MESSAGES.menuAmount);
 };
 
+const checkMenuOnlyDrink = (menus) => {
+  let discountAmount = 0;
+  menus.forEach((menu) => {
+    if (MENU.drink[menu[0]]) {
+      discountAmount += 1;
+    }
+  });
+  if (menus.length === discountAmount) throw new Error(ERROR_MESSAGES.drink);
+};
+
 const checkDate = (date) => {
   checkDateRange(date);
   checkDateLength(date);
@@ -86,6 +96,7 @@ const checkMenu = (menus) => {
   checkMenuExistence(menuSplit);
   checkMenuAmount(menuSplit);
   checkMenuExcess(menuSplit);
+  checkMenuOnlyDrink(menuSplit);
 };
 
 export { checkDate, checkMenu };
