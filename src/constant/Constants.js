@@ -75,6 +75,12 @@ const PRINT_MESSAGES = {
     `${advantage[0]}: -${PRINT_MESSAGES.costSplit(advantage[1])}`,
   totalAdvantageCost: '\n<총혜택 금액>',
   eventBadge: `\n<${MONTH_EVENT_RULES.eventMonth}월 이벤트 배지>`,
+  badge: (cost) => {
+    if (cost >= 20000) return '산타';
+    if (cost >= 10000) return '트리';
+    if (cost >= 5000) return '별';
+    if (cost < 5000) return '없음';
+  },
   nothing: '없음',
   costSplit: (cost) =>
     cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원',

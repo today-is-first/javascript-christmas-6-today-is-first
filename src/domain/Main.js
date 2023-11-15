@@ -34,6 +34,7 @@ class Main {
       this.beforeDiscountCost,
       this.totalAdvantageCost,
     );
+    OutputView.printEventBadge(this.totalAdvantageCost * -1);
   }
 
   discount() {

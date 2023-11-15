@@ -64,6 +64,11 @@ const OutputView = {
       PRINT_MESSAGES.costSplit(beforeDiscountCost + totalAdvantageCost),
     );
   },
+
+  printEventBadge(totalAdvantageCost) {
+    Console.print(PRINT_MESSAGES.eventBadge);
+    Console.print(PRINT_MESSAGES.badge(totalAdvantageCost));
+  },
 };
 
 export default OutputView;
