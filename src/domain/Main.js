@@ -6,25 +6,29 @@ import {
   MONTH_EVENT_RULES,
   PRINT_MESSAGES,
   MENU,
+  EVENT_NAME,
 } from '../constant/Constants.js';
 
 class Main {
   constructor() {
-    this.advantageCost = 0;
+    this.advantageList = [];
   }
+
   async start() {
     Console.print(PRINT_MESSAGES.intro);
     this.date = await InputView.readDate();
     this.menu = await InputView.readMenu();
     Console.print(PRINT_MESSAGES.outtro(this.date));
     OutputView.printMenu(this.menu);
-    this.BeforeDiscountCost = OutputView.printBeforeDiscountCost(this.menu);
-    this.advantageCost += OutputView.printGiftMenu(this.BeforeDiscountCost);
+    this.beforeDiscountCost = OutputView.printBeforeDiscountCost(this.menu);
+    this.advantageList.push(OutputView.printGiftMenu(this.beforeDiscountCost));
     this.discount();
-    Console.print(this.advantageCost);
+    OutputView.printAdvantageList(this.advantageList);
   }
+
   discount() {
     this.christmasEvent();
+    this.specialDiscount();
     if (
       !((this.date - MONTH_EVENT_RULES.firstFriday) % 7) ||
       !((this.date - MONTH_EVENT_RULES.firstSaturday) % 7)
@@ -37,11 +41,16 @@ class Main {
       this.weekdayDiscount(this.menu);
     }
   }
+
   christmasEvent() {
     if (this.date <= CHRISTMAS_EVENT_RULES.rangeMax) {
-      this.advantageCost += CHRISTMAS_EVENT_RULES.totalDiscount(this.date);
+      this.advantageList.push([
+        EVENT_NAME.christmas,
+        CHRISTMAS_EVENT_RULES.totalDiscount(this.date),
+      ]);
     }
   }
+
   weekdayDiscount(menus) {
     let discountAmount = 0;
     menus.forEach((menu) => {
@@ -49,7 +58,10 @@ class Main {
         discountAmount += menu[1];
       }
     });
-    this.advantageCost += MONTH_EVENT_RULES.weekdayDiscount * discountAmount;
+    this.advantageList.push([
+      EVENT_NAME.weekday,
+      MONTH_EVENT_RULES.weekdayDiscount * discountAmount,
+    ]);
   }
 
   weekendDiscount(menus) {
@@ -59,7 +71,18 @@ class Main {
         discountAmount += menu[1];
       }
     });
-    this.advantageCost += MONTH_EVENT_RULES.weekdayDiscount * discountAmount;
+    this.advantageList.push([
+      EVENT_NAME.weekend,
+      MONTH_EVENT_RULES.weekendDiscount * discountAmount,
+    ]);
+  }
+
+  specialDiscount() {
+    if (this.date === '25' || !((this.date - 3) % 7))
+      this.advantageList.push([
+        EVENT_NAME.special,
+        MONTH_EVENT_RULES.specialDiscount,
+      ]);
   }
 }
 

@@ -1,3 +1,11 @@
+const EVENT_NAME = {
+  christmas: '크리스마스 디데이 할인',
+  weekday: '평일 할인',
+  weekend: '주말 할인',
+  special: '특별 할인',
+  gift: '증정 이벤트',
+};
+
 const MENU = {
   appetizers: {
     양송이수프: 6000,
@@ -31,6 +39,7 @@ const MONTH_EVENT_RULES = {
   menuMaxNum: 20,
   giftEventThreshold: 120000,
   gift: ['샴페인', 25000, 1],
+  specialDiscount: 1000,
 };
 
 const CHRISTMAS_EVENT_RULES = {
@@ -62,6 +71,7 @@ const PRINT_MESSAGES = {
   afterDiscountCost: '\n<할인 후 예상 결제 금액>',
   giftMenu: '\n<증정 메뉴>',
   advantageList: '\n<혜택 내역>',
+  advantage: (advantage) => `${advantage[0]}: -${advantage[1]}원`,
   totalAdvantageCost: '\n<총혜택 금액>',
   eventBadge: `\n<${MONTH_EVENT_RULES.eventMonth}월 이벤트 배지>`,
   nothing: '없음',
@@ -78,4 +88,5 @@ export {
   MENU,
   MONTH_EVENT_RULES,
   CHRISTMAS_EVENT_RULES,
+  EVENT_NAME,
 };

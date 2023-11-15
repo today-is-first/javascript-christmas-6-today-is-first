@@ -3,6 +3,7 @@ import {
   MENU,
   PRINT_MESSAGES,
   MONTH_EVENT_RULES,
+  EVENT_NAME,
 } from '../constant/Constants.js';
 
 const OutputView = {
@@ -12,6 +13,7 @@ const OutputView = {
       Console.print(PRINT_MESSAGES.menu(menu[0], menu[1])),
     );
   },
+
   printBeforeDiscountCost(menus) {
     let beforeDiscountCost = 0;
     Console.print(PRINT_MESSAGES.beforeDiscountCost);
@@ -35,10 +37,20 @@ const OutputView = {
           MONTH_EVENT_RULES.gift[2],
         ),
       );
-      return MONTH_EVENT_RULES.gift[1];
+      return [EVENT_NAME.gift, MONTH_EVENT_RULES.gift[1]];
     }
     Console.print(PRINT_MESSAGES.nothing);
-    return 0;
+    return [PRINT_MESSAGES.nothing, 0];
+  },
+
+  printAdvantageList(advantageList) {
+    Console.print(PRINT_MESSAGES.advantageList);
+    if (!advantageList.reduce((acc, cur) => (acc += cur[1]), 0)) {
+      Console.print(PRINT_MESSAGES.nothing);
+    }
+    advantageList.forEach((advantage) => {
+      if (advantage[1]) Console.print(PRINT_MESSAGES.advantage(advantage));
+    });
   },
 };
 
