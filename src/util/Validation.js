@@ -62,8 +62,11 @@ const checkMenuDuplicated = (menus) => {
 };
 
 const checkMenuExcess = (menus) => {
-  let menuAmount = menus.reduce((amount, menu) => (amount += menu[1]), 0);
-  if (menuAmount > MONTH_EVENT_RULES.menuExcess)
+  let totalAmount = menus.reduce(
+    (totalAmount, menu) => (totalAmount += menu[1]),
+    0,
+  );
+  if (totalAmount > MONTH_EVENT_RULES.menuExcess)
     throw new Error(ERROR_MESSAGES.menuAmount);
 };
 
@@ -76,15 +79,13 @@ const checkDate = (date) => {
 };
 
 const checkMenu = (menus) => {
-  checkInputBlank(menus);
-  checkInputSpace(menus);
   let menuSplit;
   checkMenuFormat(menus);
   menuSplit = menus.split(',').map((input) => input.split('-'));
   checkMenuDuplicated(menuSplit);
   checkMenuExistence(menuSplit);
   checkMenuAmount(menuSplit);
-  checkMenuExcess(menuSplit);
+  /* checkMenuExcess(menuSplit); */
 };
 
 export { checkDate, checkMenu };
