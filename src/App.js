@@ -1,4 +1,4 @@
-import EventPlanner from './domain/Event.js';
+import Event from './domain/Event.js';
 
 class App {
   async run() {
