@@ -33,6 +33,7 @@ const MONTH_EVENT_RULES = {
   firstFriday: 1,
   firstSaturday: 2,
   eventMonth: 12,
+  eventDateMin: 1,
   eventDateMax: 31,
   weekdayDiscount: 2023,
   weekendDiscount: 2023,
@@ -86,7 +87,17 @@ const PRINT_MESSAGES = {
     cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원',
 };
 
-const ERROR_MESSAGES = {};
+const ERROR_MESSAGES = {
+  inputNumber: '[ERROR] 방문 날짜는 숫자여야 합니다. 다시 입력해 주세요.',
+  dateLength:
+    '[ERROR] 방문 날짜는 하루만 입력할 수 있습니다. 다시 입력해 주세요.',
+  menuAmount: '[ERROR] 메뉴는 20개를 초과할 수 없습니다. 다시 입력해 주세요.',
+  drink: '[ERROR] 음료만 주문할 수 없습니다. 다시 입력해 주세요.',
+  invalidDate: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.',
+  invalidMenu: '[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.',
+  inputBlank: '[ERROR] 입력 값이 없습니다. 다시 입력해 주세요.',
+  inputSpace: '[ERROR] 입력 값에 공백이 포함되어 있습니다. 다시 입력해 주세요.',
+};
 
 export {
   INPUT_MESSAGES,

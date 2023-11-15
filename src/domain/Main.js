@@ -97,5 +97,4 @@ class Main {
   }
 }
 
-const main = new Main();
-main.start();
+export default Main;
