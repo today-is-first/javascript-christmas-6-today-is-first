@@ -89,7 +89,7 @@ class Event {
     let discountAmount = 0;
     menus.forEach((menu) => {
       if (MENU.main[menu[0]]) {
-        discountAmount += menu[1];
+        discountAmount += Number(menu[1]);
       }
     });
     this.advantageList.push([
@@ -102,7 +102,7 @@ class Event {
     let discountAmount = 0;
     menus.forEach((menu) => {
       if (MENU.desert[menu[0]]) {
-        discountAmount += menu[1];
+        discountAmount += Number(menu[1]);
       }
     });
     this.advantageList.push([
