@@ -54,6 +54,13 @@ const checkMenuFormat = (menus) => {
   });
 };
 
+const checkMenuDuplicated = (menus) => {
+  let menuList = new Set();
+  menus.forEach((menu) => menuList.add(menu[0]));
+  if (menus.length !== menuList.size)
+    throw new Error(ERROR_MESSAGES.invalidMenu);
+};
+
 const checkDate = (date) => {
   checkDateRange(date);
   checkDateLength(date);
@@ -63,8 +70,10 @@ const checkDate = (date) => {
 };
 
 const checkMenu = (menus) => {
+  let menuSplit;
   checkMenuFormat(menus);
-  let menuSplit = menus.split(',').map((input) => input.split('-'));
+  menuSplit = menus.split(',').map((input) => input.split('-'));
+  checkMenuDuplicated(menuSplit);
   checkMenuExistence(menuSplit);
   checkMenuAmount(menuSplit);
 };
