@@ -76,6 +76,8 @@ const checkDate = (date) => {
 };
 
 const checkMenu = (menus) => {
+  checkInputBlank(menus);
+  checkInputSpace(menus);
   let menuSplit;
   checkMenuFormat(menus);
   menuSplit = menus.split(',').map((input) => input.split('-'));
