@@ -40,6 +40,20 @@ const checkMenuExistence = (menus) => {
   if (!existence) throw new Error(ERROR_MESSAGES.invalidMenu);
 };
 
+const checkMenuAmount = (menus) => {
+  menus.forEach((menu) => {
+    if (!menu[1] || menu[1].match(/\D/g))
+      throw new Error(ERROR_MESSAGES.invalidMenu);
+  });
+};
+
+const checkMenuFormat = (menus) => {
+  let format = /^([A-Za-z가-힣]+)-[1-9]$/;
+  menus.split(',').map((menu) => {
+    if (!format.test(menu)) throw new Error(ERROR_MESSAGES.invalidMenu);
+  });
+};
+
 const checkDate = (date) => {
   checkDateRange(date);
   checkDateLength(date);
@@ -49,7 +63,10 @@ const checkDate = (date) => {
 };
 
 const checkMenu = (menus) => {
-  checkMenuExistence(menus);
+  checkMenuFormat(menus);
+  let menuSplit = menus.split(',').map((input) => input.split('-'));
+  checkMenuExistence(menuSplit);
+  checkMenuAmount(menuSplit);
 };
 
 export { checkDate, checkMenu };

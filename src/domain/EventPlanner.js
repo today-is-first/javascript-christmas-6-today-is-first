@@ -25,6 +25,7 @@ class EventPlanner {
     Console.print(PRINT_MESSAGES.intro);
     this.date = await InputView.readDate();
     this.menu = await InputView.readMenu();
+    this.menu = this.menu.split(',').map((input) => input.split('-'));
     Console.print(PRINT_MESSAGES.outtro(this.date));
     OutputView.printMenu(this.menu);
   }

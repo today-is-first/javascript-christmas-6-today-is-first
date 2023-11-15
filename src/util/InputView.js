@@ -14,15 +14,17 @@ const InputView = {
     }
     return inputs;
   },
+
   async readMenu() {
     let inputs;
     try {
       inputs = await Console.readLineAsync(INPUT_MESSAGES.readMenu);
+      checkMenu(inputs);
     } catch (error) {
       Console.print(error.message);
       inputs = await this.readMenu();
     }
-    return inputs.split(',').map((input) => input.split('-'));
+    return inputs;
   },
 };
 
