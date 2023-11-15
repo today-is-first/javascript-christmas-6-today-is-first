@@ -52,6 +52,12 @@ const OutputView = {
       if (advantage[1]) Console.print(PRINT_MESSAGES.advantage(advantage));
     });
   },
+
+  printTotalAdvantageCost(advantageList) {
+    Console.print(PRINT_MESSAGES.totalAdvantageCost);
+    let totalCost = advantageList.reduce((acc, cur) => (acc -= cur[1]), 0);
+    Console.print(PRINT_MESSAGES.costSplit(totalCost));
+  },
 };
 
 export default OutputView;

@@ -24,6 +24,7 @@ class Main {
     this.advantageList.push(OutputView.printGiftMenu(this.beforeDiscountCost));
     this.discount();
     OutputView.printAdvantageList(this.advantageList);
+    OutputView.printTotalAdvantageCost(this.advantageList);
   }
 
   discount() {

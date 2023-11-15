@@ -71,7 +71,8 @@ const PRINT_MESSAGES = {
   afterDiscountCost: '\n<할인 후 예상 결제 금액>',
   giftMenu: '\n<증정 메뉴>',
   advantageList: '\n<혜택 내역>',
-  advantage: (advantage) => `${advantage[0]}: -${advantage[1]}원`,
+  advantage: (advantage) =>
+    `${advantage[0]}: -${PRINT_MESSAGES.costSplit(advantage[1])}`,
   totalAdvantageCost: '\n<총혜택 금액>',
   eventBadge: `\n<${MONTH_EVENT_RULES.eventMonth}월 이벤트 배지>`,
   nothing: '없음',
