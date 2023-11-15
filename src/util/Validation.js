@@ -38,7 +38,7 @@ const checkMenuExistence = (menus) => {
 
 const checkMenuAmount = (menus) => {
   menus.forEach((menu) => {
-    if (!menu[1] || menu[1].match(/\D/g))
+    if (!Number(menu[1]) || menu[1].match(/\D/g))
       throw new Error(ERROR_MESSAGES.invalidMenu);
   });
 };
@@ -77,10 +77,10 @@ const checkMenuOnlyDrink = (menus) => {
 };
 
 const checkDate = (date) => {
+  checkInputBlank(date);
   checkDateRange(date);
   checkDateLength(date);
   checkInputNumber(date);
-  checkInputBlank(date);
 };
 
 const checkMenu = (menus) => {
