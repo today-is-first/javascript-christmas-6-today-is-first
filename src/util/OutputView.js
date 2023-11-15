@@ -53,10 +53,16 @@ const OutputView = {
     });
   },
 
-  printTotalAdvantageCost(advantageList) {
+  printTotalAdvantageCost(totalAdvantageCost) {
     Console.print(PRINT_MESSAGES.totalAdvantageCost);
-    let totalCost = advantageList.reduce((acc, cur) => (acc -= cur[1]), 0);
-    Console.print(PRINT_MESSAGES.costSplit(totalCost));
+    Console.print(PRINT_MESSAGES.costSplit(totalAdvantageCost));
+  },
+
+  printAfterDiscountCost(beforeDiscountCost, totalAdvantageCost) {
+    Console.print(PRINT_MESSAGES.afterDiscountCost);
+    Console.print(
+      PRINT_MESSAGES.costSplit(beforeDiscountCost + totalAdvantageCost),
+    );
   },
 };
 

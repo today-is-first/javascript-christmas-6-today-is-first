@@ -12,6 +12,7 @@ import {
 class Main {
   constructor() {
     this.advantageList = [];
+    this.totalAdvantageCost = 0;
   }
 
   async start() {
@@ -23,8 +24,16 @@ class Main {
     this.beforeDiscountCost = OutputView.printBeforeDiscountCost(this.menu);
     this.advantageList.push(OutputView.printGiftMenu(this.beforeDiscountCost));
     this.discount();
+    this.totalAdvantageCost = this.advantageList.reduce(
+      (acc, cur) => (acc -= cur[1]),
+      0,
+    );
     OutputView.printAdvantageList(this.advantageList);
-    OutputView.printTotalAdvantageCost(this.advantageList);
+    OutputView.printTotalAdvantageCost(this.totalAdvantageCost);
+    OutputView.printAfterDiscountCost(
+      this.beforeDiscountCost,
+      this.totalAdvantageCost,
+    );
   }
 
   discount() {
