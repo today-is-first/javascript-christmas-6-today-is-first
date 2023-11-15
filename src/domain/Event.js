@@ -9,7 +9,7 @@ import {
   EVENT_NAME,
 } from '../constant/Constants.js';
 
-class EventPlanner {
+class Event {
   constructor() {
     this.advantageList = [];
     this.totalAdvantageCost = 0;
@@ -110,4 +110,4 @@ class EventPlanner {
   }
 }
 
-export default EventPlanner;
+export default Event;
